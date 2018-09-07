@@ -1,0 +1,388 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.youyicn</groupId>
+  <artifactId>cycle</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>cycle Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+   <properties>  
+        <!-- spring版本号 -->  
+        <spring.version>4.0.2.RELEASE</spring.version>  
+        <!-- mybatis版本号 -->  
+        <mybatis.version>3.2.6</mybatis.version>  
+        <!-- log4j日志文件管理包版本 -->  
+        <slf4j.version>1.7.7</slf4j.version>  
+        <log4j.version>1.2.17</log4j.version>
+    </properties>
+  	<dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <!-- 表示开发的时候引入，发布的时候不会加载此包 -->
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <version>1.3</version>
+            <!-- 表示开发的时候引入，发布的时候不会加载此包 -->
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <version> 1.3</version>
+            <!-- 表示开发的时候引入，发布的时候不会加载此包 -->
+            <scope>test</scope>
+        </dependency>
+
+        <!-- 导入java ee jar 包 -->
+	    <dependency>
+	        <groupId>javax</groupId>
+	        <artifactId>javaee-api</artifactId>
+	        <version>7.0</version>
+	    </dependency>
+
+        <!-- spring核心包 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- mybatis核心包 -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+
+        <!-- mybatis/spring包 -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+
+        <!-- 导入Mysql数据库链接jar包 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.30</version>
+        </dependency>
+
+        <!-- 导入dbcp的jar包，用来在applicationContext.xml中配置数据库 -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+        <!-- 日志文件管理包 -->
+        <!-- log start -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+
+        <!-- 格式化对象，方便输出日志 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.1.41</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!-- log end -->
+
+        <!-- 映入JSON -->
+        <dependency>
+              <groupId>com.fasterxml.jackson.jaxrs</groupId>
+              <artifactId>jackson-jaxrs-xml-provider</artifactId>
+              <version>2.5.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.5.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.5.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.5.2</version>
+        </dependency>
+        <!-- 上传组件包 -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.9</version>
+        </dependency>
+	  	<!-- Freemarker-->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.19</version>
+		</dependency>
+		<dependency>
+			<groupId>opensymphony</groupId>
+			<artifactId>sitemesh</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+		<!-- mybatis分页 -->
+		<dependency>
+		    <groupId>com.github.pagehelper</groupId>
+		    <artifactId>pagehelper</artifactId>
+		    <version>4.1.6</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.0</version>
+		</dependency>
+		 <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>  poi</artifactId>
+            <version>3.10-beta2</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.10-beta2</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>3.10-beta2</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-scratchpad</artifactId>
+            <version>3.0.2-FINAL</version>
+        </dependency>
+		<!-- https://mvnrepository.com/artifact/net.sourceforge.jexcelapi/jxl -->
+		<dependency>
+		    <groupId>net.sourceforge.jexcelapi</groupId>
+		    <artifactId>jxl</artifactId>
+		    <version>2.6</version>
+		</dependency>
+		<!-- solr 4.7 -->
+		<dependency>
+		    <groupId>org.apache.solr</groupId>
+		    <artifactId>solr-solrj</artifactId>
+		    <version>4.7.0</version>
+		</dependency>
+        <dependency>
+               <artifactId>solr-core</artifactId>
+               <groupId>org.apache.solr</groupId>
+               <version>4.7.0</version>
+               <type>jar</type>
+        </dependency>
+
+
+		<dependency>
+		  <groupId>net.sf.json-lib</groupId>
+		  <artifactId>json-lib</artifactId>
+		  <version>2.4</version>
+		  <classifier>jdk15</classifier>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+		<dependency>
+		    <groupId>redis.clients</groupId>
+		    <artifactId>jedis</artifactId>
+		    <version>2.9.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-pool2</artifactId>
+		    <version>2.4.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>druid</artifactId>
+		    <version>1.0.29</version>
+		</dependency>
+		<!-- 系统统一加密 -->
+        <dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+    </dependencies>
+  <build>
+    <finalName>cycle</finalName>
+     <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>**/*.properties</include>
+                <include>**/*.xml</include>
+            </includes>
+            <filtering>false</filtering>
+        </resource>
+        <resource>
+            <directory>src/main/java</directory>
+            <includes>
+                <include>**/*.properties</include>
+                <include>**/*.xml</include>
+            </includes>
+            <filtering>false</filtering>
+        </resource>
+    </resources>
+    <plugins>
+         <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-compiler-plugin</artifactId>
+             <version>2.3.2</version>
+             <configuration>
+                 <source>1.7</source>
+                 <target>1.7</target>
+             </configuration>
+         </plugin>
+<!--      	<plugin>用混淆插件混淆代码 -->
+<!--          <groupId>com.github.wvengen</groupId> -->
+<!--          <artifactId>proguard-maven-plugin</artifactId> -->
+<!--          <version>2.0.11</version> -->
+<!--          <executions> -->
+<!--              <execution> -->
+<!--                  <phase>package</phase> -->
+<!--                  <goals> -->
+<!--                      <goal>proguard</goal> -->
+<!--                  </goals> -->
+<!--              </execution> -->
+<!--          </executions> -->
+<!--          <configuration> -->
+<!--              <attach>true</attach> -->
+<!--              <attachArtifactClassifier>pg</attachArtifactClassifier> -->
+<!--              attach 的作用是在 install 与 deploy 时将生成的 pg 文件也安装与部署 -->
+<!--              <options> 详细配置方式参考 ProGuard 官方文档 -->
+<!--            		 JDK目标版本1.7 -->
+<!--                  <option>-target 1.7</option> -->
+<!--                  <option>-ignorewarnings</option> 忽略所有告警 -->
+<!--                  <option>-dontshrink</option>   不做 shrink -->
+<!--                  <option>-dontoptimize</option> 不做 optimize -->
+<!--                  <option>-dontskipnonpubliclibraryclasses </option> -->
+<!--                  <option>-dontskipnonpubliclibraryclassmembers </option> -->
+<!--                  <option>-dontnote </option> -->
+<!--                  不混淆所有包名，本人测试混淆后WEB项目问题实在太多，毕竟Spring配置中有大量固定写法的包名 -->
+<!-- 				 <option>-keeppackagenames</option> -->
+<!-- 				 优化时允许访问并修改有修饰符的类和类的成员 -->
+<!-- 				 <option>-allowaccessmodification</option> -->
+<!--                  确定统一的混淆类的成员名称来增加混淆 -->
+<!--                  <option>-useuniqueclassmembernames</option> -->
+<!--                  不混淆所有特殊的类 -->
+<!--                  保持源码名与行号（异常时有明确的栈信息），注解（默认会过滤掉所有注解，会影响框架的注解） -->
+<!--                  <option>-keepattributes Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LineNumberTable,LocalVariable*Table,*Annotation*,Synthetic,EnclosingMethod</option> -->
+
+<!--                  保持bean类名与属性名不变不变 -->
+<!--                  <option>-keep class com.youyicn.dao.** { *;}</option> -->
+<!--                  <option>-keep class com.youyicn.entity.** { *;}</option> -->
+<!--                  <option>-keep class com.youyicn.mapping.** { *;}</option> -->
+<!-- 				 <option>-keep class com.youyicn.model.** { *;}</option> -->
+<!-- 				 <option>-keep class com.youyicn.controller.** </option> -->
+<!-- 				 <option>-keep class com.youyicn.phone.** </option> -->
+<!-- 				 <option>-keep class com.youyicn.service.** </option> -->
+
+<!--              </options> -->
+<!--              加载文件的过滤器，就是你的工程目录了 -->
+<!--              <basedirectory>${project.build.directory}</basedirectory> -->
+<!--              指定混淆的jar包，我这里是将上一步输出的jar包进行混淆 -->
+<!--              <injar>classes</injar> -->
+<!--              指定输出的jar包名 -->
+<!--              <outjar>${project.build.finalName}-pg.jar</outjar> -->
+<!--              <outputDirectory>${project.build.directory}</outputDirectory> -->
+<!--              <obfuscate>true</obfuscate> -->
+<!--              添加依赖，必须添加，不然会报一些莫名错误 -->
+<!--              <libs> -->
+<!--                  <lib>${java.home}/lib/tools.jar</lib> -->
+<!--                  <lib>${java.home}/lib/jce.jar</lib> -->
+<!--              </libs> -->
+<!--          </configuration> -->
+<!--      	</plugin> -->
+  	 </plugins> 
+  </build>
+</project>
