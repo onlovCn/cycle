@@ -47,14 +47,47 @@ public class ChartController {
 
         System.out.println("柱状图");
         List<String> category = new ArrayList<String>();
-        category.add(200+"");
-        category.add(400+"");
-        category.add(600+"");
+        category.add("眼科专业基地教学任务");
+        category.add("耳鼻喉专业基地教学任务");
+        category.add("消化内科专业基地");
+        
+        category.add("急诊基地");
+        category.add("内科专业基地");
+        category.add("全科专业基地");
+        
+        category.add("全科专业基地");
+        category.add("全科专业基地");
+        category.add("全科专业基地");
+        
+        category.add("全科专业基地");
+        category.add("全科专业基地");
+        category.add("全科专业基地");
+
+        category.add("全科专业基地");
+        category.add("全科专业基地");
+        category.add("全科专业基地");
         List<Long> serisData=new ArrayList<Long>();
         serisData.add(1000L);
         serisData.add(2000L);
         serisData.add(3000L);
 
+        serisData.add(1000L);
+        serisData.add(1000L);
+        serisData.add(1000L);
+
+        serisData.add(1000L);
+        serisData.add(1000L);
+        serisData.add(2000L);
+
+        serisData.add(1000L);
+        serisData.add(1000L);
+        serisData.add(2000L);
+        
+        serisData.add(1000L);
+        serisData.add(1000L);
+        serisData.add(2000L);
+
+        
         List<String> legend = new ArrayList<String>(Arrays.asList(new String[] { "总数比较" }));// 数据分组
         List<Series> series = new ArrayList<Series>();// 纵坐标
         series.add(new Series("总数比较", "bar", serisData));

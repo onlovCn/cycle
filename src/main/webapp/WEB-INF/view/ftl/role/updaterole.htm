@@ -21,7 +21,7 @@
 					</tr>
 					<tr>
 						<td width="21%" class="td_right"><em>*</em> 角色名称</td>
-						<td width="79%"><input type="text" name="roleName" id="roleName" value="${role.name!}" class="validate[required,maxSize[50]] text-input" readonly="readonly"/><a></a></td>
+						<td width="79%"><input type="text" name="roleName" id="roleName" value="${role.name!}" class="validate[required,maxSize[50]] text-input"/><a></a></td>
 					</tr>
 	                <tr>
 	                	<td class="td_right"><em>*</em> 描述信息</td>
@@ -30,7 +30,7 @@
 	            	<tr class="button_tr">
 	                	<td>&nbsp;</td>
 	               	 	<td>
-		               	 	<input name="submit" type="submit" value="修 改" class="main_button"/> 	 
+		               	 	<input name="submit" type="submit" value="修 改" onclick="update()" class="main_button"/>
 		               	 	<input name="reset" type="button" value="重 置" class="main_button" onclick="window.location=('<@spring.url '/userRoleController/toupdaterole.htm?roleId=${role.id}&li=li12&div=div_1&menuOrder=0'/>')"/> 
 		               	 	<input type="button" class="main_button" value="返 回" onclick="window.location=('<@spring.url '/userRoleController/tolistrole.htm?li=li12&div=div_1&menuOrder=0'/>')"/>
 	               	 	</td>
@@ -81,17 +81,6 @@
 		}
 	}
 
-
-   jQuery(document).ready(function(){
-          jQuery("#upform").validationEngine('attach', {
-        	  isOverflown: true,
-  	        overflownDIV: "#right",
-            onValidationComplete: function(form, status){
-                if(status == true)
-                	update();
-            }  
-          })
-    });
 </script>
 
 </body>

@@ -242,6 +242,9 @@
       <if test="grade != null" >
         grade,
       </if>
+      <if test="isAt != null" >
+        isAt,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -349,7 +352,9 @@
       <if test="grade != null" >
         #{grade,jdbcType=INTEGER},
       </if>
-     
+      <if test="isAt != null" >
+        #{isAt,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
   <update id="editUser" parameterType="com.youyicn.entity.User" >

@@ -27,6 +27,7 @@ import com.youyicn.service.cycle.ArrturnRuleService;
 import com.youyicn.service.cycle.BaseService;
 import com.youyicn.service.cycle.RoomService;
 import com.youyicn.util.ControllerHelper;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 //轮转详情，主要是指学员安排
@@ -313,6 +314,7 @@ public class SingleArrturnCont {
 		return null;
 	}
 	@RequestMapping("/arrTurnOneController/arrturnRuleSum.htm")
+	@ResponseBody
 	public String arrTurnSumS(HttpServletRequest request,HttpServletResponse response,ModelMap model){
 		
 		String li= request.getParameter("li");
@@ -332,12 +334,10 @@ public class SingleArrturnCont {
 				ArrTurn arrTurn = arrTurnService.getArrTurnById(Integer.parseInt(id1));
 				arrTurn.setRoomName(roomName);
 				arrTurnService.upDataArrTurnRoom(arrTurn);
-				ControllerHelper.respOut(response, true);
 			} catch (Exception e) {
-				ControllerHelper.respOut(response, false);
 			}
 		}
-		return null;
+		return "true";
 		
 	}
 	

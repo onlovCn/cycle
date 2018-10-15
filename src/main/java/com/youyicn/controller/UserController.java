@@ -388,14 +388,14 @@ public class UserController {
 			for (User stu : studentList) {
 				stu.setIsAt(0);
 				stu.setStatus(1);
-				userService.insertSelective(stu);
+				userService.addUser(stu);
 			}
 			tmpFile.delete();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:userContrller/insertStu_index.htm?li=li16&div=div_1&menuOrder=1";
+		return "redirect:/userContrller/insertStu_index.htm?li=li16&div=div_1&menuOrder=1";
 	}
 	
 	@RequestMapping("/userContrller/insertarrTurn.htm")
@@ -415,7 +415,7 @@ public class UserController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:userContrller/insertStu_index.htm?li=li16&div=div_1&menuOrder=1";
+		return "redirect:/userContrller/insertStu_index.htm?li=li16&div=div_1&menuOrder=1";
 	}
 	
 	@RequestMapping("/userContrller/checkLoginName.htm")

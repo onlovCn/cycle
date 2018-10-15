@@ -1,3 +1,4 @@
+
  <#--统计的左侧-->
  <script>
      $(document).ready(function(){
@@ -42,7 +43,7 @@
             <div class="left_title" id="div_3"><span>图形显示</span></div>
             <div class="left_em">
                 <ul>
-                    <li id="li13"><img src="${uri.imgsite}/left_icon01.gif"><a href="<@spring.url "/chartController/index.htm?li=li12&div=div_1&menuOrder=1&type=b"/>">基地月度统计</a></li>
+                    <li id="li13"><img src="${uri.imgsite}/left_icon01.gif"><a href="<@spring.url "/chartController/index.htm?li=li12&div=div_1&menuOrder=1&type=b"/>">基地统计</a></li>
                    </ul>
             </div>
 
