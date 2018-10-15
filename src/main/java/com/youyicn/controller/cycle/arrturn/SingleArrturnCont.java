@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.youyicn.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -144,6 +145,15 @@ public class SingleArrturnCont {
 		String div = request.getParameter("div");
 		String type = request.getParameter("type");
 		String baseName = request.getParameter("baseName");
+		String loginName= request.getParameter("loginName");
+		model.put("loginName", loginName);
+		if(!StringUtils.NotNull(baseName)){
+            User byNum = userService.getByNum(loginName);
+            if(null!=byNum){
+                baseName= byNum.getBaseName();
+
+            }
+		}
 		model.put("baseName", baseName);
 		model.put("li", li);
 		model.put("div", div);
@@ -152,9 +162,6 @@ public class SingleArrturnCont {
 		List<ArrturnRule> roomValues = new ArrayList<ArrturnRule>();
 
 
-		String loginName= request.getParameter("loginName");
-		model.put("loginName", loginName);
-		
 		roomValues= getRoomValues(baseName);
 		model.put("roomValues", roomValues);
 		model.put("baseName", baseName);
