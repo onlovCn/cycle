@@ -163,7 +163,15 @@ function delayTime(index){
 
 function toDel(tId){
     var url ="<@spring.url '/singleArrTurnCont/del.htm?id="+tId+"'/>";
-    window.location = url;
+    $.ajax({
+        type:'POST',
+        url:url,
+        success:function(data){
+            if(data=='true'){
+                alert("修改成功，请刷新页面");
+            }
+        }
+    });;
 
 }
 
