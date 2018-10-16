@@ -384,16 +384,18 @@ public class SingleArrturnCont {
 	}
 	
 	@RequestMapping("/singleArrTurnCont/del.htm")
-	public String delindex(HttpServletRequest request,HttpServletResponse response,ModelMap model ){
+	public void delindex(HttpServletRequest request,HttpServletResponse response,ModelMap model ){
 		String id1= request.getParameter("id");
 		if(null!=id1 && ""!=id1){
 			int id= Integer.parseInt(id1);
 			try{
 				arrTurnService.delArrTurnByid(id);
+				ControllerHelper.respOut(response,"true");
 			} catch (Exception e) {
+
+                ControllerHelper.respOut(response,"false");
 			}
 		}
-		return "redirect:/singleArrTurnCont/index.htm";
 	}
 
 	
