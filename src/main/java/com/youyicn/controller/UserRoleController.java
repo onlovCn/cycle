@@ -136,13 +136,11 @@ public class UserRoleController {
 		model.put("div", div);
 		String roleId = request.getParameter("roleId");
 		String roleDes = request.getParameter("roleDes");
-		String name = request.getParameter("roleName");
 		long id = 0;
 		if(null != roleId && !"".equals(roleId)){
 			id = Long.parseLong(roleId);
 		}
 		Role role = roleService.findById(id);
-		role.setName(name);
 		role.setDes(roleDes);
 		try{
 			roleService.updateById(role);

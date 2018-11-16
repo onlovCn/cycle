@@ -144,58 +144,6 @@ function editArrTurn(){
         }
     });
 }
-function delayTime(index){
-    var len=$("#sizeLen").val();
-    var loginName=$("#loginName").val();
-    var url = '<@spring.url "/singleArrTurnCont/updateTime1.htm?li=${li!}&div=${div!}&loginName='+loginName+'&type=${type!}&menuOrder=0&index='+index+'"/>';
-    $.ajax({
-        type:'POST',
-        url:url,
-        success:function(data){
-            if(data=='true'){
-                alert("修改成功，请刷新页面");
-            }
-        }
-    });
-}
-
-
-
-function toDel(tId){
-    var url ="<@spring.url '/singleArrTurnCont/del.htm?id="+tId+"'/>";
-    window.location = url;
-
-}
-
-function doSubArrTurn(){
-    var param = null;
-    var postmethod = "POST";
-    var param = $("#addform3").serialize();
-    var url = "<@spring.url '/singleArrTurnCont/Insert.htm'/>";
-    $.ajax({
-        type: postmethod,
-        cache: false,
-        url: url,
-        data : param,
-        success: function(data){
-            if(!validateFieldMs(data)){
-                return;
-            }
-            if(data == 'true'){
-                tip(1,true);
-                return;
-            }else if(data == 'false'){
-                tip(1,false);
-                return;
-            }
-            showMessageDialog(null,data,'','');
-        },
-        error:function(xhr,err){
-            window.location.href=url;
-        }
-    });
-}
-
 </script>
 </body>
 </html>
