@@ -1,6 +1,11 @@
 package com.youyicn.entity.cycle;
 
 
+import com.youyicn.entity.RspInfo;
+
+import java.io.Serializable;
+import java.util.Arrays;
+
 /**
  * <p>
  *
@@ -9,8 +14,8 @@ package com.youyicn.entity.cycle;
  * @author kaifa
  * @since 2018-11-27
  */
-public class CycleScoreModel{
-
+public class CycleScoreModel extends RspInfo implements Serializable {
+    private static final long serialVersionUID = 1L;
     /**
      * 评分模板Id
      */
@@ -35,6 +40,30 @@ public class CycleScoreModel{
      * 备注
      */
     private String remark;
+    /**
+     * 评分项名称列表
+     */
+    private String[] itemNames;
+    /**
+     * 评分项分数列表
+     */
+    private String[] itemScores;
+
+    public String[] getItemNames() {
+        return itemNames;
+    }
+
+    public void setItemNames(String[] itemNames) {
+        this.itemNames = itemNames;
+    }
+
+    public String[] getItemScores() {
+        return itemScores;
+    }
+
+    public void setItemScores(String[] itemScores) {
+        this.itemScores = itemScores;
+    }
 
     public Integer getModelId() {
         return modelId;
@@ -84,6 +113,8 @@ public class CycleScoreModel{
                 ", modelName='" + modelName + '\'' +
                 ", scoreItem='" + scoreItem + '\'' +
                 ", remark='" + remark + '\'' +
+                ", itemNames=" + Arrays.toString(itemNames) +
+                ", itemScores=" + Arrays.toString(itemScores) +
                 '}';
     }
 }

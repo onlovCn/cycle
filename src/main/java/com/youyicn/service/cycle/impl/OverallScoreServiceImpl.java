@@ -32,12 +32,8 @@ public class OverallScoreServiceImpl implements IOverallScoreService {
      * @createDate 2018/11/27 11:30
      */
     @Override
-    public List<CycleScoreModel> findAllScoreModelList(Integer current) {
-        //获取当前页
-        if (current == null){
-            current = 1;
-        }
-        List<CycleScoreModel> allScoreModelList = cycleScoreModelMapper.findAllScoreModelList(current);
+    public List<CycleScoreModel> findAllScoreModelList() {
+        List<CycleScoreModel> allScoreModelList = cycleScoreModelMapper.findAllScoreModelList();
         return allScoreModelList;
     }
 
@@ -64,7 +60,7 @@ public class OverallScoreServiceImpl implements IOverallScoreService {
      */
     @Override
     public void deleteScoreModelById(Integer modelId) {
-
+        cycleScoreModelMapper.deleteScoreModelById(modelId);
     }
 
     /**
@@ -77,7 +73,9 @@ public class OverallScoreServiceImpl implements IOverallScoreService {
      */
     @Override
     public CycleScoreModel findScoreModelById(Integer modelId) {
-        return null;
+        if(modelId == null)
+            return null;
+        return cycleScoreModelMapper.findScoreModelById(modelId);
     }
 
     /**
@@ -89,7 +87,7 @@ public class OverallScoreServiceImpl implements IOverallScoreService {
      * @createDate 2018/11/27 11:29
      */
     @Override
-    public void updateScoreModelById() {
-
+    public void editScoreModel(CycleScoreModel scoreModel) {
+        cycleScoreModelMapper.editScoreModel(scoreModel);
     }
 }

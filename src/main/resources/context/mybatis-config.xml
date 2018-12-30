@@ -32,5 +32,5 @@
         <!-- 不理解该含义的前提下，不要随便复制该配置 
         <property name="params" value="pageNum=start;pageSize=limit;"/>    -->
         </plugin>  
-    </plugins>  
+    </plugins>
 </configuration>  

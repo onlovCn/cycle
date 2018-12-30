@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ *  360综合评分模板
  * </p>
  *
  * @author kaifa
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface CycleScoreModelMapper{
     //查询所有评分模板
-    List<CycleScoreModel> findAllScoreModelList(Integer current);
+    List<CycleScoreModel> findAllScoreModelList();
 
     //添加评分模板
     void addScoreModel(CycleScoreModel scoreModel);
@@ -26,5 +26,5 @@ public interface CycleScoreModelMapper{
     CycleScoreModel findScoreModelById(Integer modelId);
 
     //通过模板Id修改评分模板
-    void updateScoreModelById();
+    void editScoreModel(CycleScoreModel scoreModel);
 }
