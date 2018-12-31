@@ -38,7 +38,7 @@ public class OverallScoreModelController {
     private IOverallScoreService overallScoreServiceImpl;
 
     //进入360互评首页，返回评分模板列表
-    @RequestMapping("/overallScore/index.htm")
+    @RequestMapping("/overallScoreModel/index.htm")
     public String scoreIndex(HttpServletResponse response, HttpServletRequest request, ModelMap model, String type, String li, String div, Integer pageIndex) {
 
         //封装页面信息参数
