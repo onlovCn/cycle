@@ -42,6 +42,7 @@
           		  <li id="li12"><img src="${uri.imgsite}/left_icon03.gif"><a href="<@spring.url "/userRoleController/tolistrole.htm?li=li12&div=div_1&menuOrder=1"/>">用户角色管理</a></li>
         		  <li id="li16"><img src="${uri.imgsite}/left_icon09.gif"><a href="<@spring.url "/userContrller/insertStu_index.htm?li=li16&div=div_1&menuOrder=1"/>">信息录入</a></li>
           		  <li id="li17"><img src="${uri.imgsite}/left_icon08.gif"><a href="<@spring.url "/commonController/add.htm?li=li17&div=div_1&menuOrder=1"/>">字典添加</a></li>
+          		  <li id="li15"><img src="${uri.imgsite}/left_icon01.gif"><a href="<@spring.url "/overallScoreModel/index.htm?li=li18&div=div_1&menuOrder=1"/>">360评分模板</a></li>
                 </ul>
             </div> 
          </#if>
