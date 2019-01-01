@@ -767,11 +767,11 @@
 			system.win = p.indexOf("Win") == 0; 
 			system.mac = p.indexOf("Mac") == 0; 
 			system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);    
-			if(system.win||system.mac||system.xll){
+			// if(system.win||system.mac||system.xll){
 				    var urlPath ="adminLogin.htm"; 
-			}else{  //如果是手机,跳转到谷歌
-				    var urlPath ="wap/adminLogin.htm"; 
-			}
+			// }else{  //如果是手机,跳转到谷歌
+			// 	    var urlPath ="wap/adminLogin.htm";
+			// }
 	 	  	$('#form1').attr('action',urlPath).submit();
 	 	
 	 }

@@ -1,10 +1,15 @@
 package com.youyicn.controller.cycle;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.youyicn.entity.LoginSession;
 import com.youyicn.entity.RspInfo;
 import com.youyicn.entity.User;
 import com.youyicn.entity.cycle.CycleScore;
+import com.youyicn.entity.cycle.CycleScoreModel;
+import com.youyicn.service.UserService;
 import com.youyicn.service.cycle.IScoreService;
+import com.youyicn.util.SessionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,21 +19,61 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @Title OverallScoreController
  * @Description 360评分管理
- * @Copyright: 版权所有 (c) 2018 - 2019
- * @Company: 电子商务中心
- * @Author wangtan
- * @Version 1.0.0
- * @Create 2018/12/14 10:34
  */
 @Controller
 public class OverallScoreController {
 
     @Autowired
     private IScoreService scoreService;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private UserService userService;
+
+
+    //通用的配置都是放在最下面
+    private User getSession(HttpServletRequest request) {
+        Object obj= request.getSession().getAttribute("loginName");
+        User teacher = new User();
+        if(obj instanceof String){
+            String loginName = (String) obj;
+            teacher  = userService.getByNum(loginName);
+        }
+        return teacher;
+    }
+
+
+    @RequestMapping("/overallScore/index.htm")
+    public String scoreIndex(HttpServletResponse response, HttpServletRequest request, ModelMap model, String type, String li, String div, Integer pageIndex) {
+       User user = getSession(request);
+        //封装页面信息参数
+        model.put("type", type);
+        model.put("li", li);
+        model.put("div", div);
+
+
+
+        //获取当前页
+        if (pageIndex == null) {
+            pageIndex = 1;
+        }
+        PageHelper.startPage(pageIndex, 15);
+        //获取模板列表
+        List<CycleScoreModel> allScoreModelList = overallScoreServiceImpl.findAllScoreModelList();
+        PageInfo<CycleScoreModel> page = new PageInfo<>(allScoreModelList);
+        model.put("page", page);
+        return "/overallScore/index";
+    }
+
+
+
 
     /** 
      *@title
