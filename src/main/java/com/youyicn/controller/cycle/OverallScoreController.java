@@ -8,8 +8,8 @@ import com.youyicn.entity.User;
 import com.youyicn.entity.cycle.CycleScore;
 import com.youyicn.entity.cycle.CycleScoreModel;
 import com.youyicn.service.UserService;
+import com.youyicn.service.cycle.IOverallScoreService;
 import com.youyicn.service.cycle.IScoreService;
-import com.youyicn.util.SessionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,7 +35,9 @@ public class OverallScoreController {
     private UserService userService;
 
     @Autowired
-    private UserService userService;
+    private IOverallScoreService iOverallScoreService;
+    @Autowired
+    private IScoreService iScoreService;
 
 
     //通用的配置都是放在最下面
@@ -58,15 +60,12 @@ public class OverallScoreController {
         model.put("li", li);
         model.put("div", div);
 
-
-
-        //获取当前页
         if (pageIndex == null) {
             pageIndex = 1;
         }
         PageHelper.startPage(pageIndex, 15);
         //获取模板列表
-        List<CycleScoreModel> allScoreModelList = overallScoreServiceImpl.findAllScoreModelList();
+        List<CycleScoreModel> allScoreModelList = iOverallScoreService.findAllScoreModelList();
         PageInfo<CycleScoreModel> page = new PageInfo<>(allScoreModelList);
         model.put("page", page);
         return "/overallScore/index";
@@ -78,7 +77,7 @@ public class OverallScoreController {
     /** 
      *@title
      *@description 添加360综合评分记录
-     *@param  []
+     *@param
      *@return  java.lang.String
      *@author  wangtan
      *@createDate  2018/12/14 11:16
@@ -122,7 +121,7 @@ public class OverallScoreController {
     /** 
      *@title  
      *@description 必传参数校验
-     *@param  [cycleScore]
+     *@param
      *@return  boolean
      *@author  wangtan
      *@createDate  2018/12/14 11:28
