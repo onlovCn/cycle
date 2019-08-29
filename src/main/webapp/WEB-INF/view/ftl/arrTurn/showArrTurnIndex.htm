@@ -17,17 +17,20 @@
 				<input type="text" value="${type!}" name="type" style="display: none"/>
 				<div style="border: 0px solid silver;height: 30px;padding-top: 3px;">
 					选择年级 ：
-					2014<input type="radio" value="2014" name="grade" />&nbsp;&nbsp;&nbsp;&nbsp;
-					2015<input type="radio" value="2015" name="grade" />&nbsp;&nbsp;&nbsp;&nbsp;
-					2016<input type="radio" value="2016" name="grade" />&nbsp;&nbsp;&nbsp;&nbsp;
-					2017<input type="radio" value="2017" name="grade"/>&nbsp;&nbsp;&nbsp;&nbsp;
-					2018<input type="radio" value="2018" name="grade"/>&nbsp;&nbsp;&nbsp;&nbsp;
-					学生编号:<select name="loginName" > 
+
+					2015<input type="radio" value="2015" name="grade" />&nbsp;&nbsp;
+					2016<input type="radio" value="2016" name="grade" />&nbsp;&nbsp;
+					2017 <input type="radio" value="2017" name="grade"/>&nbsp;&nbsp;
+					2018<input type="radio" value="2018" name="grade"/>&nbsp;&nbsp;
+					2019<input type="radio" value="2019" name="grade"/>&nbsp;&nbsp;
+					2020<input type="radio" value="2020" name="grade"/>&nbsp;&nbsp;
+					2021<input type="radio" value="2021" name="grade"/>&nbsp;&nbsp;
+					学生编号:<select name="loginName" >
 					<#if userList?? && userList ? size gt 0>
-						<option value="">请选择</option> 
+						<option value="">请选择</option>
 						<#list userList as user>
 							<option value="${user.loginName!}"${user.realName!}</option>
-						</#list> 
+						</#list>
 					</#if>
 					</select>&nbsp;&nbsp;&nbsp;&nbsp;
 						<button type="button" class="btn btn-danger btn-sm" onclick="queryList()" >搜 索</button>
@@ -36,7 +39,7 @@
 		</div>
 		<!-- 显示数据的div -->
 		<div id="dataDiv">
-		
+
 		</div>
 	</div>
 </div>
@@ -51,7 +54,7 @@ var url = "<@spring.url '/bArrTurnController/list.htm?targetID=dataDiv&formID=se
 function queryList(){
 	var url ="<@spring.url '/bArrTurnController/list.htm?targetID=dataDiv&formID=searchform'/>";
 	ajaxFormRequest("{url:'"+url+"',id:'dataDiv',form:'searchform'}");
-}	
+}
 </script>
 
 </body>

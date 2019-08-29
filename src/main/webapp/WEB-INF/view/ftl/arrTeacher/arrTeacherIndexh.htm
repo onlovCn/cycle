@@ -12,38 +12,41 @@
 		<div class="main_search">
 			<form id="searchform" >
 				<div style="border: 0px solid silver;height: 30px;padding-top: 3px;">
-					科室：<select name="roomName" id="roomName" style="width: 120px;" > 
+					科室：<select name="roomName" id="roomName" style="width: 120px;" >
 					<#if roomValues?? && roomValues?size gt 0>
-						<option value="">请选择</option> 
+						<option value="">请选择</option>
 						<#list roomValues as roomValue>
 								<option value="${roomValue.value}" <#if roomValue.value==roomName!>selected="selected"</#if> >${roomValue.value}</option>
-						</#list> 
+						</#list>
 					</#if>
 					</select>
 					&nbsp;&nbsp;
-					年级：  
-					2014<input type="radio" value="2014"  name="grade" />&nbsp;&nbsp;
-					2015<input type="radio" value="2015" name="grade" />&nbsp;&nbsp;
-					2016<input type="radio" value="2016" name="grade" />&nbsp;&nbsp;
-					2017<input type="radio" value="2017" name="grade"/>&nbsp;&nbsp;
-					2018<input type="radio" value="2018" name="grade"/>&nbsp;&nbsp;
+					年级：
+
+			2015<input type="radio" value="2015" name="grade" />&nbsp;&nbsp;
+			2016<input type="radio" value="2016" name="grade" />&nbsp;&nbsp;
+			2017 <input type="radio" value="2017" name="grade"/>&nbsp;&nbsp;
+			2018<input type="radio" value="2018" name="grade"/>&nbsp;&nbsp;
+			2019<input type="radio" value="2019" name="grade"/>&nbsp;&nbsp;
+			2020<input type="radio" value="2020" name="grade"/>&nbsp;&nbsp;
+			2021<input type="radio" value="2021" name="grade"/>&nbsp;&nbsp;
 					开始时间：
 						<input id="searchStart" type="text" name="searchStart" id="searchStart" />
-							<img onclick="WdatePicker({el:'searchStart',dateFmt:'yyyy-MM-dd'})" 
-									src="${uri.jssite}/My97DatePicker/skin/datePicker.gif" width="16" height="22" align="absmiddle">	
+							<img onclick="WdatePicker({el:'searchStart',dateFmt:'yyyy-MM-dd'})"
+									src="${uri.jssite}/My97DatePicker/skin/datePicker.gif" width="16" height="22" align="absmiddle">
 					&nbsp;&nbsp;
 					结束时间：
 						<input id="searchEnd" type="text" name="searchEnd" id="searchEnd" />
-							<img onclick="WdatePicker({el:'searchEnd',dateFmt:'yyyy-MM-dd'})" 
-									src="${uri.jssite}/My97DatePicker/skin/datePicker.gif" width="16" height="22" align="absmiddle">	
+							<img onclick="WdatePicker({el:'searchEnd',dateFmt:'yyyy-MM-dd'})"
+									src="${uri.jssite}/My97DatePicker/skin/datePicker.gif" width="16" height="22" align="absmiddle">
 					&nbsp;&nbsp;
 						<input type="hidden" name="li" value="${li!}"/>
 						<input type="hidden" name="div" value="${div!}"/>
 						<input type="hidden" name="pageIndex" value="${pageIndex!'1'}"/>
 						<button type="button" class="btn btn-danger btn-sm" onclick="queryList()" >搜 索</button>
-						
-						
-						
+
+
+
 				</div>
 			</form>
 		</div>
@@ -57,7 +60,7 @@
 			<input type="hidden" name="grade" value="${grade!}"/>
 			<input type="hidden" name="searchStart" value="${searchStart!}"/>
 			<input type="hidden" name="searchEnd" value="${searchEnd!}"/>
-			
+
 			<table class="table table-bordered table-hover">
 			<tr class="table_title">
 				<td width="8%">学员编号</td>
@@ -69,11 +72,11 @@
 				<td width="8%">结束时间</td>
 				<td width="8%">已有老师1</td>
 				<td width="10%">已有老师2</td>
-				
+
 				<td width="8%">指派老师1</td>
 				<td width="10%">指派老师2</td>
 				<td width="14%">操作</td>
-			
+
 			</tr>
 				<#if page.list?? && page.list?size gt 0>
 				<#list page.list as arrTurn>
@@ -87,33 +90,33 @@
 					<td>${arrTurn.endTime[0..10]!}</td>
 					<td>${arrTurn.teacherName1!}</td>
 					<td>${arrTurn.teacherName2!}</td>
-					
-					
+
+
 					<td>
-						<select name="${arrTurn.arrTurnId}t1" > 
+						<select name="${arrTurn.arrTurnId}t1" >
 							<#if teacherList?? && teacherList ? size gt 0>
-								<option value="">请选择</option> 
+								<option value="">请选择</option>
 								<#list teacherList as teacher>
 									<option value="${teacher.loginName!}:${teacher.realName!}">${teacher.realName!}</option>
-										
-								</#list> 
+
+								</#list>
 							</#if>
 						</select>
 					</td>
 					<td>
-						<select name="${arrTurn.arrTurnId}t2" > 
+						<select name="${arrTurn.arrTurnId}t2" >
 							<#if teacherList?? && teacherList ? size gt 0>
-								<option value="">请选择</option> 
+								<option value="">请选择</option>
 								<#list teacherList as teacher>
 									<option value="${teacher.loginName!}:${teacher.realName!}">${teacher.realName!}</option>
-								</#list> 
+								</#list>
 							</#if>
 						</select>&nbsp;&nbsp;&nbsp;&nbsp;
 					</td>
 					<td>
 						<a href="#" onclick="arrTeacher(${arrTurn.arrTurnId!})">指派老师</a>
-					</td> 
-			
+					</td>
+
 				</tr>
 				</#list>
 			<#else>
@@ -156,7 +159,7 @@ function arrTeacher(id){
 			showMessageDialog(null,data,'','');
 		   },
 		   error:function(xhr,err){
-			   window.location.href=url; 
+			   window.location.href=url;
 		}
 	});
 }

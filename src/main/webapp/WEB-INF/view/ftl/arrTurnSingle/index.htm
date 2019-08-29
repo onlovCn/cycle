@@ -15,22 +15,23 @@ util /> <#import "../decorators/spring.ftl" as spring />
 						<input type="hidden" name="li" value="${li!}"/>
 						<input type="hidden" name="div" value="${div!}"/>
 						<input type="hidden" name="type" value="${type!}"/>
-						基地：<select name="baseName" id="baseName" style="width: 105px;" > 
+						基地：<select name="baseName" id="baseName" style="width: 105px;" >
 						<#if baseValues?? && baseValues?size gt 0>
-							<option value="">请选择</option> 
+							<option value="">请选择</option>
 							<#list baseValues as baseValue>
 									<option value="${baseValue.value}" <#if baseValue.value==baseNamed!>selected="selected"</#if> >${baseValue.value}</option>
-							</#list> 
+							</#list>
 						</#if>
 						</select>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-						学生姓名<input type ="text" name ="realName" value="${userNamed!}" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-						选择年级：  
-						2014<input type="radio" value="2014" name="grade" />&nbsp;&nbsp;&nbsp;&nbsp;
-						2015<input type="radio" value="2015" name="grade" />&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						学生姓名<input type ="text" name ="realName" value="${userNamed!}" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						选择年级：
 						2016<input type="radio" value="2016" name="grade" />&nbsp;&nbsp;&nbsp;&nbsp;
 						2017 <input type="radio" value="2017" name="grade"/>&nbsp;&nbsp;&nbsp;&nbsp;
 						2018<input type="radio" value="2018" name="grade"/>&nbsp;&nbsp;&nbsp;&nbsp;
+						2019<input type="radio" value="2019" name="grade"/>&nbsp;&nbsp;&nbsp;&nbsp;
+						2020<input type="radio" value="2020" name="grade"/>&nbsp;&nbsp;&nbsp;&nbsp;
+						2021<input type="radio" value="2021" name="grade"/>&nbsp;&nbsp;&nbsp;&nbsp;
 						<button type="button" class="btn btn-danger btn-sm" onclick="queryUser()" >搜 索</button>
 					</form>
 				</div>
@@ -54,11 +55,11 @@ util /> <#import "../decorators/spring.ftl" as spring />
 							<td>${user.xuewei!}</td>
 							<td>
 								<#if user.isAt?? && user.isAt==1>
-									<a href="javaScript:showArrTurn('${user.loginName!}');" > 
+									<a href="javaScript:showArrTurn('${user.loginName!}');" >
 							          	<span class="glyphicon glyphicon-align-justify"></span>
 							        </a>&nbsp;&nbsp;
 									<button type="button" class="btn .btn-default btn-sm"  onclick="showArrTurn('${user.loginName!}')" >查看安排</button>
-								<#else> 
+								<#else>
 									<button type="button" class="btn btn-danger btn-sm"  >未安排</button>
 								</#if>
 							</td>
@@ -77,9 +78,9 @@ util /> <#import "../decorators/spring.ftl" as spring />
 				<#if export?? && type =="h">
 					<div style="margin-top: 30px;">
 						<h3> 导出${grade!}级所有学员到excel</h3>
-						<form id="form1" name="form1"  method="post">  
-						    <input type="submit" name="exit" id="exit" value="导出">  
-						</form> 
+						<form id="form1" name="form1"  method="post">
+						    <input type="submit" name="exit" id="exit" value="导出">
+						</form>
 					</div>
 				</#if>
 				</div>
@@ -89,7 +90,7 @@ util /> <#import "../decorators/spring.ftl" as spring />
 <script>
 // url="<@spring.url '/arrTurn/outexcel.htm?grade=${grade!}&baseName=${baseName!}'/>";
 $("#exit").click(function(){
-	var grades=document.getElementsByName("grade");	
+	var grades=document.getElementsByName("grade");
 	var grade;
 	for(i in grades){
 		if(grades[i].checked){
@@ -105,7 +106,7 @@ $("#exit").click(function(){
 	}
 	var urlPath="<@spring.url '/arrTurn/outexcel.htm?grade="+grade+"&baseName="+baseName+"'/>";
 	$('#form1').attr('action',urlPath).submit();
-	
+
 });
 function queryUser(){
 	var url ="<@spring.url '/singleArrTurnCont/index.htm'/>";

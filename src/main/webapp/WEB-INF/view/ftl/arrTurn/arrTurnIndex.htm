@@ -8,62 +8,65 @@ util /> <#import "../decorators/spring.ftl" as spring />
 <body>
 	<#include "../decorators/left1.ftl" ><div class="main_right" id="right">
 		<div class="right_con">
-		
+
 			 <form id="searchform" onclick="<@spring.url '/arrTurnController/arrturn_index.htm'/>"   class="bs-example bs-example-form" role="form">
 			        <input type="text" value="${type!}" name="type" style="display: none"/>
 					<input type="text" value="${li!}" name="li" style="display: none"/>
 					<input type="text" value="${div!}" name="div" style="display: none"/>
 					<div class="container" >
-						   <div class="row" >	
+						   <div class="row" >
 						   		<div class="col-xs-3" >
 							        <div class="input-group">
 							            <span class="input-group-addon">选择年级</span>
-								           <select name="grade" class="form-control" 	data-toggle="selectpicker"> 												
-													<option value="">请选择</option> 									
-													<option value="2014"  <#if "2014"== grade!> selected="selected"</#if>> 2014</option>
+								           <select name="grade" class="form-control" 	data-toggle="selectpicker">
+													<option value="">请选择</option>
 													<option value="2015"  <#if "2015"== grade!> selected="selected"</#if>> 2015</option>
 													<option value="2016"  <#if "2016"== grade!> selected="selected"</#if>> 2016</option>
 													<option value="2017"  <#if "2017"== grade!> selected="selected"</#if> >2017</option>
 													<option value="2018"  <#if "2018"== grade!> selected="selected"</#if> >2018</option>
-												
+													<option value="2019"  <#if "2019"== grade!> selected="selected"</#if> >2019</option>
+													<option value="2020"  <#if "2020"== grade!> selected="selected"</#if> >2020</option>
+													<option value="2021"  <#if "2021"== grade!> selected="selected"</#if> >2021</option>
+
+
 											</select>
 							        </div>
 							       </div>
 							     <div class="col-xs-3" >
 							         <div class="input-group">
 							            <span class="input-group-addon">选择基地</span>
-							            <select name="baseName"  class="form-control" 	data-toggle="selectpicker"> 
+							            <select name="baseName"  class="form-control" 	data-toggle="selectpicker">
 											<#if baseValues?? && baseValues?size gt 0>
-												<option value="">请选择</option> 
+												<option value="">请选择</option>
 												<#list baseValues as baseValue>
 														<option value="${baseValue.value}"  <#if baseValue.value== baseName!> selected="selected"</#if> >${baseValue.value!}</option>
-												</#list> 
+												</#list>
 											</#if>
 										</select>
 							        </div>
 							       </div>
 							     <div class="col-xs-6" >
 							         <div class="input-group">
-							           <input  type="submit"  value="搜 索" class="btn btn-danger" />	
+							           <input  type="submit"  value="搜 索" class="btn btn-danger" />
 							        </div>
 							      </div>
 						      </div>
 					      </div>
-			  
+
 			    </form>
 			    <hr>
-			
+
 				<div id="dataDiv">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							
+
 							<#if grade?? && baseName?? >
 								<h5 style=" color:#FF0000"> 单独添加轮转</h5>${baseName!}${grade!}级学员轮转
 							<#else>
 								<h5 style="color:red ;margin-left: 60px;">没有选择基地和年级不能安排学员</h5>
 							</#if>
 						</div>
-						
+
 						<div class="panel-body">
 							<form id="atForm">
 							<input type="text" value="${type!}" name="type" style="display: none"/>
@@ -72,31 +75,31 @@ util /> <#import "../decorators/spring.ftl" as spring />
 							<input type="text" value="${grade!}" name="grade" style="display: none"/>
 							<input type="text" value="${baseName!}" name="baseName" style="display: none"/>
 							<div ><font size="20px;">
-						
+
 							</font>
 							</div>
-							<table class="table table-bordered table-hover" style="width: 50%">	
+							<table class="table table-bordered table-hover" style="width: 50%">
 								<tr>
 									<td width="21%" >指派学员：</td>
 									<td width="21%">
 										<#if userList?? && userList?size gt 0>
-										<select name="userParm" id="userParm"  > 
-											<option value="">请选择</option> 
+										<select name="userParm" id="userParm"  >
+											<option value="">请选择</option>
 											<#list userList as user>
-						
+
 						+							<option value="${user.loginName!}:${user.realName!}" >${user.realName!}</option>
-											</#list> 
+											</#list>
 										</select>
 										<#else>
 											本基地该学年学生已经安排完成；
-										</#if>	
+										</#if>
 									</td>
 								</tr>
 								<tr>
 									<td >请指派科室：</td>
 									<td>
-									<Select id="selectedRoom" name = "roomName"  class="form-control" 	data-toggle="selectpicker"> 
-										<option value="请选择">--请选择--</option> 
+									<Select id="selectedRoom" name = "roomName"  class="form-control" 	data-toggle="selectpicker">
+										<option value="请选择">--请选择--</option>
 										<#list arrTurnRuleList as arrTurnRule>
 										<option value="${arrTurnRule.roomName}">${arrTurnRule.roomName}</option>
 										</#list>
@@ -106,8 +109,8 @@ util /> <#import "../decorators/spring.ftl" as spring />
 								<tr>
 									<td >开始时间：</td>
 									<td>
-									<input id="startTime" type="text" name="startTime" /> 
-									<img onclick="WdatePicker({el:'startTime',dateFmt:'yyyy-MM-dd'})"	
+									<input id="startTime" type="text" name="startTime" />
+									<img onclick="WdatePicker({el:'startTime',dateFmt:'yyyy-MM-dd'})"
 										src="${uri.jssite}/My97DatePicker/skin/datePicker.gif" width="16"	height="22" align="absmiddle">
 									</td>
 								</tr>
@@ -115,16 +118,16 @@ util /> <#import "../decorators/spring.ftl" as spring />
 					              	 	<td colspan="2">
 										<button type="button"  onclick="subBtn()" class="btn btn-info" >提交</button>
 					              	 	</td>
-								</tr>   
+								</tr>
 							</table>
 						</form>
 						</div>
 					</div>
-					
+
 					<br/>
 					<div class="panel panel-default">
 						 <div class="panel-heading">
-						 	
+
 							    <h5 style=" color:#FF0000"> 批量添加轮转</h5>
 								<#if grade?? && baseName?? >
 									${baseName!}${grade!}级学员批量安排轮转
@@ -139,9 +142,9 @@ util /> <#import "../decorators/spring.ftl" as spring />
 								<input type="text" value="${div!}" name="div" style="display: none"/>
 								<input type="text" value="${grade!}" name="grade" style="display: none"/>
 								<input type="text" value="${baseName!}" name="baseName" style="display: none"/>
-							
+
 									<#if userList?? && userList?size gt 0>
-										<table class="table table-bordered table-hover" style="width: 50%">	
+										<table class="table table-bordered table-hover" style="width: 50%">
 											<thead>
 												<tr>
 													<td>选择</td>
@@ -153,38 +156,38 @@ util /> <#import "../decorators/spring.ftl" as spring />
 													<tr>
 														<td> <input type="checkbox" name="userNamePick" value="${user.loginName!}" ></td>
 														<td>${user.realName!} </td>
-													</tr>	
-												</#list> 
+													</tr>
+												</#list>
 													<tr>
 														<td >开始时间：</td>
 														<td>
-														<input id="startTime1" type="text" name="startTime1" /> 
-														<img onclick="WdatePicker({el:'startTime1',dateFmt:'yyyy-MM-dd'})"	
+														<input id="startTime1" type="text" name="startTime1" />
+														<img onclick="WdatePicker({el:'startTime1',dateFmt:'yyyy-MM-dd'})"
 															src="${uri.jssite}/My97DatePicker/skin/datePicker.gif" width="16"	height="22" align="absmiddle">
 														</td>
 													</tr>
-													
+
 													<tr class="button_tr">
 									              	 	<td colspan="2">
 															<button type="button"  onclick="subBtnPick()" class="btn btn-info" >提交</button>
 									              	 	</td>
-													</tr>   
+													</tr>
 											<#else>
 												<tr>
 													<td colspan="2"></td>
 												</tr>
 												本基地该学年学生已经安排完成；
 											</#if>
-											</tbody>	
+											</tbody>
 									</table>
 							</form>
 						</div>
-					
-					
+
+
 				</div>
 			</div>
 		</div>
-	
+
 <div style="display: none;">
     <a id="addSuccessed" href="#" onclick="showMessageDialog(event,'新建成功','<@spring.url '/arrTurnController/arrturn_index.htm?li=${li!}&div=${div!}&menuOrder=0&type=${type!}&grade=${grade!}&baseName=${baseName!}'/>','closeWindow();');" ></a>
     <a id="addFailed" href="#" onclick="showMessageDialog(event,'新建失败','','');" ></a>
@@ -220,7 +223,7 @@ function subBtnPick(){
 			showMessageDialog(null,data,'','');
 		   },
 		   error:function(xhr,err){
-			   window.location.href=url; 
+			   window.location.href=url;
 		}
 	});
 }
@@ -230,7 +233,7 @@ function subBtn(){
 	var userParm = $("#userParm").val();
 	var selectedRoom = $("#selectedRoom").val();
 	var startTime = $("#startTime").val();
-	
+
 	if (userParm == "") {
 		alert("请至少选择一位学员！");
 		return;
@@ -264,7 +267,7 @@ function subBtn(){
 			showMessageDialog(null,data,'','');
 		   },
 		   error:function(xhr,err){
-			   window.location.href=url; 
+			   window.location.href=url;
 		}
 	});
 }

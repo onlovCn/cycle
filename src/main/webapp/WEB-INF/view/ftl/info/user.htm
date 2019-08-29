@@ -14,8 +14,8 @@ function targetPage(pageIndex){
 	var url = '<@spring.url "/userinfo/index.htm?menuOrder=0&pageIndex='+pageIndex+'&type='+type+'&userName='+userName+'&baseName='+baseName+'"/>';
 	closeWindow("mesWindowUsr");
 	pop_userinfo(event,url);
-	
-  } 
+
+  }
 </script>
 </head>
 <body>
@@ -25,36 +25,38 @@ function targetPage(pageIndex){
 	<div class="right_con">
 		<div class="main_search">
 			<form id="searchform" style="height: 30px;">
-				专业基地 <select name="baseName" id="baseName"> 
+				专业基地 <select name="baseName" id="baseName">
 					<#if baseNamed??>
 						<option value="${baseNamed}" selected="selected">${baseNamed}</option>
 					</#if>
-						<option value="">请选择</option>											
+						<option value="">请选择</option>
 						<#list baseValues as baseValue>
 						<option value="${baseValue.value}">${baseValue.value}</option>
-						</#list>					
-					  </select>&nbsp; 
+						</#list>
+					  </select>&nbsp;
 					  <#if type?? && type=='1'>
-							科室 <select name="roomName" id="roomName"> 
+							科室 <select name="roomName" id="roomName">
 							<#if roomNamed??>
 								<option value="${roomNamed}" selected="selected">${roomNamed}</option>
 							</#if>
-								<option value="">请选择</option>											
+								<option value="">请选择</option>
 								<#list roomValues as roomValue>
 								<option value="${roomValue.value}">${roomValue.value}</option>
-								</#list>					
+								</#list>
 							  </select>&nbsp; &nbsp; &nbsp;
-						</#if> 
-							
-				姓名 &nbsp; <input name="userName" type="text" value="${userName!}"  id="userName"class="validate[custom[chineseAndLetterAndNumber]]" maxlength="18"/> &nbsp; 
+						</#if>
+
+				姓名 &nbsp; <input name="userName" type="text" value="${userName!}"  id="userName"class="validate[custom[chineseAndLetterAndNumber]]" maxlength="18"/> &nbsp;
 				<#if type ?? && type ='2'>
-					年级 
-					<input type="radio" name = "grade" value="2014"/> 2014 &nbsp; &nbsp; 
-					<input type="radio" name = "grade" value="2015"/> 2015 &nbsp; &nbsp; 
-					<input type="radio" name = "grade" value="2016"/> 2016 &nbsp; &nbsp; 
-					<input type="radio" name = "grade" value="2017"/> 2017 &nbsp; &nbsp; 
-					<input type="radio" name = "grade" value="2018"/> 2018 &nbsp; &nbsp; 
-				</#if>	
+					年级
+					<input type="radio" name = "grade" value="2015"/> 2015 &nbsp; &nbsp;
+					<input type="radio" name = "grade" value="2016"/> 2016 &nbsp; &nbsp;
+					<input type="radio" name = "grade" value="2017"/> 2017 &nbsp; &nbsp;
+					<input type="radio" name = "grade" value="2018"/> 2018 &nbsp; &nbsp;
+					<input type="radio" name = "grade" value="2019"/> 2019 &nbsp; &nbsp;
+					<input type="radio" name = "grade" value="2020"/> 2020 &nbsp; &nbsp;
+					<input type="radio" name = "grade" value="2021"/> 2021 &nbsp; &nbsp;
+				</#if>
 					<input  type="button" value="搜 索" class="look_02" onclick="querySerchList();"/>
 			</form>
 		</div>
@@ -88,14 +90,14 @@ function targetPage(pageIndex){
 			</table>
 			<#include "../decorators/page.htm" />
 			<input type="hidden" id="type" name="type" value="${type!}"/>
-		</div>			
+		</div>
 </div>
 
 
 </body>
 <script>
 function querySerchList(){
-	var grade  = $('input[name="grade"]:checked').val(); 
+	var grade  = $('input[name="grade"]:checked').val();
 	var userName = $("#userName").val();
 	var baseName = $("#baseName").val();
 	var roomName = $("#roomName").val();
@@ -103,7 +105,7 @@ function querySerchList(){
 	var url = '<@spring.url "/userinfo/index.htm?menuOrder=0&userName='+userName+'&grade='+grade+'&type='+type+'&roomName='+roomName+'&baseName='+baseName+'"/>';
 	closeWindow("mesWindowUsr");
 	pop_userinfo("event",url);
-}   
+}
 
 </script>
 </script>

@@ -5,14 +5,15 @@
 		<td>名称</td>
 		<td>操作</td>
 	</tr>
-	<#if type ?? && status == 0 >
+	<#if type ?? && type == 0 >
 		<tr>
 			<td>${base.id!}</td>
 			<td>${base.baseNum!}</td>
 			<td>${base.value!}</td>
 			<td>操作</td>
 		</tr>
-	<#if type ?? && status == 1 >
+	</#if>
+	<#if type ?? && type == 1 >
 		<tr>
 			<td>id</td>
 			<td>${room.roomNum!}</td>
